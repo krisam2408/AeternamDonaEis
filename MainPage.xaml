@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="AeternamDonaEis.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AeternamDonaEis"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource Schwarz}"
+    Width="480"
+    Height="880">
+
+    <Grid Name="WindowGrid"
+          HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"></ColumnDefinition>
+            <ColumnDefinition Width="240"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left">
+            <StackPanel Padding="8" Margin="8" BorderThickness="1" BorderBrush="{StaticResource Weiss}" Orientation="Vertical">
+                <TextBlock Margin="0 0 0 8" Text="Quantity"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBox TextAlignment="Right" MaxLength="3" Height="32" Text="{x:Bind ViewModel.Generate.Quantity, Converter={StaticResource StringToInt}}"></TextBox>
+                    <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="0" Command="">▲</Button>
+                    <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="0">▼</Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Padding="8" Margin="8" BorderThickness="1" MaxWidth="240" BorderBrush="{StaticResource Weiss}" Orientation="Vertical">
+                <TextBlock Margin="0 0 0 8" Text="Types"></TextBlock>
+                <ListBox></ListBox>
+                <TextBlock Margin="0 8"></TextBlock>
+                <ListBox></ListBox>
+            </StackPanel>
+            <StackPanel Padding="8" Margin="8" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Margin="0 0 8 0">Minify</Button>
+                <Button>Copy</Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Padding="8">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled"
+                          VerticalScrollMode="Auto" Height="824">
+                <TextBlock TextWrapping="WrapWholeWords"></TextBlock>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Page>

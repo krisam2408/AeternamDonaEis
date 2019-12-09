@@ -1,0 +1,16 @@
+﻿<Application
+    x:Class="AeternamDonaEis.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AeternamDonaEis"
+    xmlns:cvt="using:AeternamDonaEis.Converter">
+
+    <Application.Resources>
+        <Color x:Key="Weiss">#f0f0f0</Color>
+        <Color x:Key="Schwarz">#101010</Color>
+
+        <cvt:StringToIntConverter x:Key="StringToInt"></cvt:StringToIntConverter>
+
+    </Application.Resources>
+
+</Application>
