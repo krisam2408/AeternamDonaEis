@@ -120,7 +120,16 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Enum.cs" />
-    <Compile Include="Classes\GenerateOption.cs" />
+    <Compile Include="Classes\GenDataTransfer.cs" />
+    <Compile Include="Classes\Generator.cs" />
+    <Compile Include="Classes\Serializables\IOutput.cs" />
+    <Compile Include="Classes\Serializables\Letters.cs" />
+    <Compile Include="Classes\Serializables\Lists.cs" />
+    <Compile Include="Classes\Serializables\Output.cs" />
+    <Compile Include="Classes\RelayCommand.cs" />
+    <Compile Include="Classes\Serializables\Paragraphs.cs" />
+    <Compile Include="Classes\Serializables\Words.cs" />
+    <Compile Include="Classes\Texts.cs" />
     <Compile Include="Converter\StringToIntConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -202,6 +211,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

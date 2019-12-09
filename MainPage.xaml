@@ -20,9 +20,9 @@
             <StackPanel Padding="8" Margin="8" BorderThickness="1" BorderBrush="{StaticResource Weiss}" Orientation="Vertical">
                 <TextBlock Margin="0 0 0 8" Text="Quantity"></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBox TextAlignment="Right" MaxLength="3" Height="32" Text="{x:Bind ViewModel.Generate.Quantity, Converter={StaticResource StringToInt}}"></TextBox>
-                    <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="0" Command="">▲</Button>
-                    <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="0">▼</Button>
+                    <TextBox TextAlignment="Right" MaxLength="3" Height="32" Text="{x:Bind ViewModel.Generate.Quantity, Converter={StaticResource StringToInt}, Mode=TwoWay}"></TextBox>
+                    <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="4 0" Command="{x:Bind ViewModel.Generate.IncreaseCommand}">▲</Button>
+                    <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="4 0" Command="{x:Bind ViewModel.Generate.DecreaseCommand}">▼</Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Padding="8" Margin="8" BorderThickness="1" MaxWidth="240" BorderBrush="{StaticResource Weiss}" Orientation="Vertical">
@@ -32,14 +32,14 @@
                 <ListBox></ListBox>
             </StackPanel>
             <StackPanel Padding="8" Margin="8" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Margin="0 0 8 0">Minify</Button>
+                <Button Margin="0 0 8 0" Content="{x:Bind ViewModel.Generate.MinifyContent}" IsEnabled="{x:Bind ViewModel.Generate.Minify}"></Button>
                 <Button>Copy</Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1" Padding="8">
             <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled"
                           VerticalScrollMode="Auto" Height="824">
-                <TextBlock TextWrapping="WrapWholeWords"></TextBlock>
+                <TextBlock TextWrapping="WrapWholeWords" Text="{x:Bind ViewModel.Generate.Result}"></TextBlock>
             </ScrollViewer>
         </StackPanel>
     </Grid>

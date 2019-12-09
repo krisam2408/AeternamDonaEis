@@ -28,7 +28,18 @@ namespace AeternamDonaEis
         public MainPage()
         {
             this.InitializeComponent();
+            MainViewModel.Instance.Generate = new GenerateViewModel();
             this.ViewModel = MainViewModel.Instance;
         }
+
+        private void Increase_Click(object sender, RoutedEventArgs e)
+        {
+            //MainViewModel.Instance.Generate.IncreaseQuantity();
+        }
+        private void Decrease_Click(object sender, RoutedEventArgs e)
+        {
+            ///MainViewModel.Instance.Generate.DecreaseQuantity();
+        }
+
     }
 }
