@@ -136,8 +136,15 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\GenerateViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MinifyViewModel.cs" />
+    <Compile Include="ViewModel\TextGeneratorViewModel.cs" />
+    <Compile Include="ViewModel\Locator.cs" />
+    <Compile Include="Views\MinifyPage.xaml.cs">
+      <DependentUpon>MinifyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextGeneratorPage.xaml.cs">
+      <DependentUpon>TextGeneratorPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -206,6 +213,14 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MinifyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TextGeneratorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

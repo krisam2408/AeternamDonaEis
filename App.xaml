@@ -8,7 +8,7 @@
     <Application.Resources>
         <Color x:Key="Weiss">#f0f0f0</Color>
         <Color x:Key="Schwarz">#101010</Color>
-
+        
         <cvt:StringToIntConverter x:Key="StringToInt"></cvt:StringToIntConverter>
 
     </Application.Resources>

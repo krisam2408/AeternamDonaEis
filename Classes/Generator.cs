@@ -19,7 +19,7 @@ namespace AeternamDonaEis.Classes
 
             switch (options.Output)
             {
-                case TextOutput.XML:
+                //case TextOutput.XML:
                 case TextOutput.Json:
                     output = GenerateObject(options);
                     break;
@@ -38,7 +38,7 @@ namespace AeternamDonaEis.Classes
             {
                 output += GenerateSegment(options, i);
             }
-
+            if (options.Quantity == 0) return string.Empty;
             return StringEndFormat(output);
         }
 
@@ -119,14 +119,14 @@ namespace AeternamDonaEis.Classes
 
             switch (options.Output)
             {
-                case TextOutput.XML:
-                    using (StringWriter reader = new StringWriter())
-                    {
-                        Type[] childrenTypes = { typeof(Letters), typeof(Words), typeof(Paragraphs), typeof(Lists) };
-                        XmlSerializer xml = new XmlSerializer(typeof(Output), childrenTypes);
-                        xml.Serialize(reader, output);
-                        return reader.ToString();
-                    }
+                //case TextOutput.XML:
+                //    using (StringWriter reader = new StringWriter())
+                //    {
+                //        Type[] childrenTypes = { typeof(Letters), typeof(Words), typeof(Paragraphs), typeof(Lists) };
+                //        XmlSerializer xml = new XmlSerializer(typeof(Output), childrenTypes);
+                //        xml.Serialize(reader, output);
+                //        return reader.ToString();
+                //    }
                 case TextOutput.Json:
                     return JsonConvert.SerializeObject(output, Formatting.Indented);
                 default:
@@ -450,12 +450,12 @@ namespace AeternamDonaEis.Classes
                         }
                     }
                     break;
-                case TextOutput.XML:
-                    while (stringChain.Contains("> "))
-                    {
-                        stringChain = stringChain.Replace("> ", ">");
-                    }
-                    break;
+                //case TextOutput.XML:
+                //    while (stringChain.Contains("> "))
+                //    {
+                //        stringChain = stringChain.Replace("> ", ">");
+                //    }
+                //    break;
                 default:
                     throw new ArgumentOutOfRangeException("Output Format", "Not a valid output format.");
             }

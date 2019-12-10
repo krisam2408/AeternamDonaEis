@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AeternamDonaEis.Classes;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Xaml;
 
 namespace AeternamDonaEis.ViewModel
 {
-    public class GenerateViewModel : BaseViewModel
+    public class TextGeneratorViewModel : BaseViewModel
     {
 
         private List<GenerateType> lstType;
@@ -26,6 +27,7 @@ namespace AeternamDonaEis.ViewModel
                 SetValue(ref selType, value); 
                 SelTitleOption = SelTitleOption;
                 Quantity = 0;
+                GenerateText();
             } 
         }
         private List<TitleOptions> lstTitleOption;
@@ -50,13 +52,25 @@ namespace AeternamDonaEis.ViewModel
                         titles = TitleOptions.WithoutTitles;
                         break;
                 }
-                SetValue(ref selTitleOption, titles); 
+                SetValue(ref selTitleOption, titles);
+                GenerateText();
             } 
         }
         private List<TextOutput> lstOutput;
         public List<TextOutput> LstOutput { get { return lstOutput; } set { SetValue(ref lstOutput, value); } }
         private TextOutput selOutput;
-        public TextOutput SelOutput { get { return selOutput; } set { SetValue(ref selOutput, value); } }
+        public TextOutput SelOutput
+        { 
+            get 
+            { 
+                return selOutput; 
+            } 
+            set 
+            { 
+                SetValue(ref selOutput, value);
+                GenerateText();
+            } 
+        }
         private int quantity;
         public int Quantity 
         { 
@@ -67,7 +81,7 @@ namespace AeternamDonaEis.ViewModel
             set 
             {
                 int w = value;
-                if (value > 1)
+                if (value < 1)
                 {
                     switch (SelType)
                     {
@@ -88,7 +102,8 @@ namespace AeternamDonaEis.ViewModel
                             break;
                     }
                 }
-                SetValue(ref quantity, w); 
+                SetValue(ref quantity, w);
+                GenerateText();
             } 
         }
         private string result;
@@ -96,14 +111,9 @@ namespace AeternamDonaEis.ViewModel
 
         public ICommand IncreaseCommand { get { return new RelayCommand(IncreaseQuantity); } }
         public ICommand DecreaseCommand { get { return new RelayCommand(DecreaseQuantity); } }
+        public ICommand CopyCommand { get { return new RelayCommand(Copy); } }
 
-        private bool minify;
-        public bool Minify { get { return minify; }set { SetValue(ref minify, value); } }
-
-        private string minifyContent;
-        public string MinifyContent { get { return minifyContent; } set { SetValue(ref minifyContent, value); } }
-
-        public GenerateViewModel()
+        public TextGeneratorViewModel()
         {
             LstType = new List<GenerateType>();
             LstTitleOption = new List<TitleOptions>();
@@ -111,8 +121,6 @@ namespace AeternamDonaEis.ViewModel
             foreach (GenerateType t in Enum.GetValues(typeof(GenerateType))) LstType.Add(t);
             foreach (TitleOptions to in Enum.GetValues(typeof(TitleOptions))) LstTitleOption.Add(to);
             foreach (TextOutput o in Enum.GetValues(typeof(TextOutput))) LstOutput.Add(o);
-
-            Minify = false;
 
             SelType = GenerateType.Words;
             SelOutput = TextOutput.Raw;
@@ -129,20 +137,15 @@ namespace AeternamDonaEis.ViewModel
         {
             Quantity--;
         }
+        private void Copy()
+        {
+            var data = new DataPackage();
+            data.SetText(Result);
+            Clipboard.SetContent(data);
+        }
         private void GenerateText()
         {
-            switch (SelOutput)
-            {
-                case TextOutput.Json:
-                case TextOutput.XML:
-                    Minify = true;
-                    break;
-                default:
-                    Minify = false;
-                    break;
-            }
-            MinifyContent = Minify ? "Normalize" : "Minify";
-            Result = Minify ? AeternamGenerator.Minify(AeternamGenerator.Generate(options), options.Output) : AeternamGenerator.Generate(options);
+            Result = Generator.Generate(new GenDataTransfer(SelType, Quantity, SelTitleOption, SelOutput));
         }
 
     }

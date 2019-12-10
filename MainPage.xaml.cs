@@ -1,4 +1,6 @@
-﻿using AeternamDonaEis.ViewModel;
+﻿using AeternamDonaEis.Classes;
+using AeternamDonaEis.ViewModel;
+using AeternamDonaEis.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,23 +25,34 @@ namespace AeternamDonaEis
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public MainViewModel ViewModel { get; set; }
+        public Locator ViewModel { get; set; }
 
         public MainPage()
         {
             this.InitializeComponent();
-            MainViewModel.Instance.Generate = new GenerateViewModel();
-            this.ViewModel = MainViewModel.Instance;
+            ViewModel = Locator.Instance;
+            Navigate(0);
         }
 
-        private void Increase_Click(object sender, RoutedEventArgs e)
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MainViewModel.Instance.Generate.IncreaseQuantity();
-        }
-        private void Decrease_Click(object sender, RoutedEventArgs e)
-        {
-            ///MainViewModel.Instance.Generate.DecreaseQuantity();
+            ListBox list = (ListBox)sender;
+            int index = list.SelectedIndex;
+            Navigate(index);
+
         }
 
+        private void Navigate(int index)
+        {
+            switch (index)
+            {
+                case 1:
+                    WindowFrame.Navigate(typeof(MinifyPage));
+                    break;
+                default:
+                    WindowFrame.Navigate(typeof(TextGeneratorPage));
+                    break;
+            }
+        }
     }
 }

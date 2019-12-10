@@ -1,6 +1,7 @@
 ﻿using AeternamDonaEis.Classes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -19,6 +20,7 @@ namespace AeternamDonaEis.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        #region SetValue
         protected void SetValue(ref GenerateType target, GenerateType value)
         {
             target = value;
@@ -64,6 +66,17 @@ namespace AeternamDonaEis.ViewModel
             target = value;
             NotifyPropertyChanged("");
         }
+        protected void SetValue(ref Windows.Storage.StorageFile target, Windows.Storage.StorageFile value)
+        {
+            target = value;
+            NotifyPropertyChanged("");
+        }
+        protected void SetValue(ref ObservableCollection<Windows.Storage.StorageFile> target, ObservableCollection<Windows.Storage.StorageFile> value)
+        {
+            target = value;
+            NotifyPropertyChanged("");
+        }
 
+        #endregion
     }
 }

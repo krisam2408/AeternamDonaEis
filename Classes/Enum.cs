@@ -20,6 +20,6 @@ namespace AeternamDonaEis.Classes
 
     public enum TextOutput
     {
-        HTML, Raw, Json, XML
+        HTML, Raw, Json//, XML
     }
 }
