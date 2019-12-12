@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,6 +33,29 @@ namespace AeternamDonaEis.Views
         {
             this.InitializeComponent();
             ViewModel = Locator.Instance.Minify;
+        }
+
+        private async void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            int index = listBox.SelectedIndex;
+            var dialog = new MessageDialog("Are you sure you want to remove this file from the query?", "Are you sure?");
+            dialog.Commands.Clear();
+            dialog.Commands.Add(new UICommand("Yes"));
+            dialog.Commands.Add(new UICommand("No"));
+
+            dialog.DefaultCommandIndex = 0;
+
+            var command = await dialog.ShowAsync();
+
+            switch(command.Label)
+            {
+                case "Yes":
+                    Locator.Instance.Minify.RemoveFile(index);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

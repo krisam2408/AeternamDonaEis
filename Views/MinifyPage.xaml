@@ -14,7 +14,10 @@
             <ListBox ItemsSource="{x:Bind ViewModel.LstFiles, Mode=TwoWay}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" FontSize="=32" HorizontalAlignment="Left"></TextBlock>
+                            <TextBlock Text="X" FontSize="32" HorizontalAlignment="Right"></TextBlock>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -25,7 +28,7 @@
         <StackPanel Orientation="Vertical" Margin="0 8" HorizontalAlignment="Right">
             <Button Command="{x:Bind ViewModel.PickFolderCommand}" Content="Choose Folder" 
                     Width="168" Margin="0 0 0 8"></Button>
-            <Button Command="{x:Bind ViewModel.MinifyCommand}" Content="Minify" Width="168"></Button>
+            <Button Command="{x:Bind ViewModel.MinifyCommand}" Content="Minify" Width="168" IsEnabled="{x:Bind ViewModel.MinifyEnabled, Mode=TwoWay}"></Button>
         </StackPanel>
     </StackPanel>
 </Page>

@@ -59,7 +59,7 @@ namespace AeternamDonaEis.ViewModel
             {
                 if(path != value)
                 {
-                    SetValue(ref path, value);
+                    if(path != value) SetValue(ref path, value);
                 }
             }
         }
@@ -90,6 +90,14 @@ namespace AeternamDonaEis.ViewModel
             MinifyEnabled = true;
         }
 
+        public void RemoveFile(int index)
+        {
+            if(index > -1 && index < LstFiles.Count)
+            {
+                LstFiles.RemoveAt(index);
+            }
+        }
+
 
         private async void PickFile()
         {
@@ -111,7 +119,7 @@ namespace AeternamDonaEis.ViewModel
             LstFiles = tempList;
         }
 
-        public async void PickFolder()
+        private async void PickFolder()
         {
             var folderPicker = new FolderPicker
             {
@@ -132,7 +140,7 @@ namespace AeternamDonaEis.ViewModel
         {
             foreach(StorageFile stg in LstFiles)
             {
-                string fileName = stg.DisplayName;
+                string fileName = $"{stg.DisplayName}.min{stg.FileType}";
                 // Agregar .min.
 
                 var stream = await stg.OpenAsync(FileAccessMode.Read);
