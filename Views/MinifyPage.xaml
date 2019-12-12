@@ -8,9 +8,10 @@
     mc:Ignorable="d"
     Background="{StaticResource Schwarz}">
 
-    <StackPanel Padding="8" Orientation="Vertical">
-        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" VerticalScrollMode="Auto" Height="480" Width="480">
-            <ListBox ItemsSource="{x:Bind ViewModel.LstFiles}">
+    <StackPanel Padding="32 8" Orientation="Vertical">
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" 
+                      VerticalScrollMode="Auto" Height="240" Width="400">
+            <ListBox ItemsSource="{x:Bind ViewModel.LstFiles, Mode=TwoWay}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"></TextBlock>
@@ -18,6 +19,13 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
-        <Button Command="{x:Bind ViewModel.PickFileCommand}" Content="Click"></Button>
+        <Button Command="{x:Bind ViewModel.PickFileCommand}" Content="Choose Files!" HorizontalAlignment="Right" 
+                Width="168" Margin="0 8"></Button>
+        <TextBox Text="{x:Bind ViewModel.Path, Mode=TwoWay}" IsEnabled="False"></TextBox>
+        <StackPanel Orientation="Vertical" Margin="0 8" HorizontalAlignment="Right">
+            <Button Command="{x:Bind ViewModel.PickFolderCommand}" Content="Choose Folder" 
+                    Width="168" Margin="0 0 0 8"></Button>
+            <Button Command="{x:Bind ViewModel.MinifyCommand}" Content="Minify" Width="168"></Button>
+        </StackPanel>
     </StackPanel>
 </Page>

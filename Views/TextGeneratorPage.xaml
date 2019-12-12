@@ -17,18 +17,18 @@
             <StackPanel Padding="8" Margin="8" BorderThickness="1" BorderBrush="{StaticResource Weiss}" Orientation="Vertical">
                 <TextBlock Margin="0 0 0 8" Text="Quantity"></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBox TextAlignment="Right" MaxLength="3" Height="32" Text="{x:Bind ViewModel.Quantity, Converter={StaticResource StringToInt}, Mode=TwoWay}"></TextBox>
+                    <TextBox TextAlignment="Right" MaxLength="3" Height="32" Text="{x:Bind ViewModel.Quantity, Converter={StaticResource StringToInt}, Mode=TwoWay}"
+                             TextChanged="TextBox_TextChanged"></TextBox>
                     <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="4 0" Command="{x:Bind ViewModel.IncreaseCommand}">▲</Button>
                     <Button Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Padding="4 0" Command="{x:Bind ViewModel.DecreaseCommand}">▼</Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Padding="8" Margin="8 0 8 8" BorderThickness="1" MaxWidth="240" BorderBrush="{StaticResource Weiss}" Orientation="Vertical">
                 <TextBlock Margin="0 0 0 8" Text="Types"></TextBlock>
-                <ListBox ItemsSource="{x:Bind ViewModel.LstType}" SelectionChanged="LstTypes_SelectionChanged" 
-                         SelectedItem="{x:Bind ViewModel.SelType}"></ListBox>
+                <ListBox ItemsSource="{x:Bind ViewModel.LstType}" SelectedItem="{x:Bind ViewModel.SelType, Mode=TwoWay}"></ListBox>
                 <TextBlock Margin="0 8">Title Options</TextBlock>
-                <ListBox ItemsSource="{x:Bind ViewModel.LstTitleOption}" SelectionChanged="LstTitleOptions_SelectionChanged"
-                         SelectedItem="{x:Bind ViewModel.SelTitleOption}"></ListBox>
+                <ListBox ItemsSource="{x:Bind ViewModel.LstTitleOption}" SelectedItem="{x:Bind ViewModel.SelTitleOption, Mode=TwoWay}"
+                         SelectionChanged="LstTitleOptions_SelectionChanged"></ListBox>
             </StackPanel>
             <StackPanel Padding="8"
                         Margin="8 0"
@@ -38,8 +38,7 @@
                         Orientation="Vertical">
                 <TextBlock Margin="0 0 0 8"
                            Text="Output" />
-                <ListBox ItemsSource="{x:Bind ViewModel.LstOutput}" SelectionChanged="LstOutput_SelectionChanged"
-                         SelectedItem="{x:Bind ViewModel.SelOutput}"/>
+                <ListBox ItemsSource="{x:Bind ViewModel.LstOutput}" SelectedItem="{x:Bind ViewModel.SelOutput, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Padding="0 8" Margin="8 0" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Command="{x:Bind ViewModel.CopyCommand}" Width="120">Copy</Button>
@@ -49,7 +48,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled"
                           VerticalScrollMode="Auto" Height="640">
                 <StackPanel BorderBrush="{StaticResource Weiss}" BorderThickness="1" Padding="8" Margin="8" MaxWidth="360">
-                    <TextBlock TextWrapping="WrapWholeWords" Text="{x:Bind ViewModel.Result, Mode=OneWay}" ></TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords" Text="{x:Bind ViewModel.Result, Mode=TwoWay}" ></TextBlock>
                 </StackPanel>
             </ScrollViewer>
         </StackPanel>

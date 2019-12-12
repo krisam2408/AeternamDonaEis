@@ -40,7 +40,11 @@ namespace AeternamDonaEis.Views
 
         private void LstTitleOptions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Locator.Instance.TextGenerate.SelTitleOption = (TitleOptions)((ListBox)sender).SelectedItem;
+            ListBox listBox = (ListBox)sender;
+            TitleOptions listValue = (TitleOptions)listBox.SelectedItem;
+            Locator.Instance.TextGenerate.SelTitleOption = listValue;
+            TitleOptions viewModelValue = Locator.Instance.TextGenerate.SelTitleOption;
+            if(listValue != viewModelValue) listBox.SelectedItem = viewModelValue;
         }
 
         private void LstOutput_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -48,5 +52,10 @@ namespace AeternamDonaEis.Views
             Locator.Instance.TextGenerate.SelOutput = (TextOutput)((ListBox)sender).SelectedItem;
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (int.TryParse(textBox.Text, out int num)) Locator.Instance.TextGenerate.Quantity = num;
+        }
     }
 }

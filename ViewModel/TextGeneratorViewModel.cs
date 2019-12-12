@@ -14,7 +14,7 @@ namespace AeternamDonaEis.ViewModel
     {
 
         private List<GenerateType> lstType;
-        public List<GenerateType> LstType { get { return lstType; } set { SetValue(ref lstType, value); } }
+        public List<GenerateType> LstType { get { return lstType; } set { if(lstType!=value)SetValue(ref lstType, value); } }
         private GenerateType selType;
         public GenerateType SelType 
         { 
@@ -24,14 +24,17 @@ namespace AeternamDonaEis.ViewModel
             } 
             set 
             {
-                SetValue(ref selType, value); 
-                SelTitleOption = SelTitleOption;
-                Quantity = 0;
-                GenerateText();
+                if(selType != value)
+                {
+                    SetValue(ref selType, value); 
+                    SelTitleOption = SelTitleOption;
+                    Quantity = 0;
+                    GenerateText();
+                }
             } 
         }
         private List<TitleOptions> lstTitleOption;
-        public List<TitleOptions> LstTitleOption { get { return lstTitleOption; } set { SetValue(ref lstTitleOption, value); } }
+        public List<TitleOptions> LstTitleOption { get { return lstTitleOption; } set { if(lstTitleOption != value) SetValue(ref lstTitleOption, value); } }
         private TitleOptions selTitleOption;
         public TitleOptions SelTitleOption
         { 
@@ -52,12 +55,15 @@ namespace AeternamDonaEis.ViewModel
                         titles = TitleOptions.WithoutTitles;
                         break;
                 }
-                SetValue(ref selTitleOption, titles);
-                GenerateText();
+                if(selTitleOption != titles)
+                {
+                    SetValue(ref selTitleOption, titles);
+                    GenerateText();
+                }
             } 
         }
         private List<TextOutput> lstOutput;
-        public List<TextOutput> LstOutput { get { return lstOutput; } set { SetValue(ref lstOutput, value); } }
+        public List<TextOutput> LstOutput { get { return lstOutput; } set { if(lstOutput != value) SetValue(ref lstOutput, value); } }
         private TextOutput selOutput;
         public TextOutput SelOutput
         { 
@@ -67,8 +73,11 @@ namespace AeternamDonaEis.ViewModel
             } 
             set 
             { 
-                SetValue(ref selOutput, value);
-                GenerateText();
+                if(selOutput != value)
+                {
+                    SetValue(ref selOutput, value);
+                    GenerateText();
+                }
             } 
         }
         private int quantity;
@@ -80,34 +89,37 @@ namespace AeternamDonaEis.ViewModel
             } 
             set 
             {
-                int w = value;
+                int quantum = value;
                 if (value < 1)
                 {
                     switch (SelType)
                     {
                         case GenerateType.Paragraphs:
-                            w = 3;
+                            quantum = 3;
                             break;
                         case GenerateType.Lists:
-                            w = 9;
+                            quantum = 9;
                             break;
                         case GenerateType.Words:
-                            w = 36;
+                            quantum = 36;
                             break;
                         case GenerateType.Letters:
-                            w = 150;
+                            quantum = 150;
                             break;
                         default:
-                            w = 0;
+                            quantum = 0;
                             break;
                     }
                 }
-                SetValue(ref quantity, w);
-                GenerateText();
+                if(quantity != quantum)
+                {
+                    SetValue(ref quantity, quantum);
+                    GenerateText();
+                }
             } 
         }
         private string result;
-        public string Result { get { return result; } set { SetValue(ref result, value); } }
+        public string Result { get { return result; } set { if(result != value) SetValue(ref result, value); } }
 
         public ICommand IncreaseCommand { get { return new RelayCommand(IncreaseQuantity); } }
         public ICommand DecreaseCommand { get { return new RelayCommand(DecreaseQuantity); } }

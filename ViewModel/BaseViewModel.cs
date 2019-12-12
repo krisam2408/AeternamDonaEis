@@ -23,57 +23,62 @@ namespace AeternamDonaEis.ViewModel
         #region SetValue
         protected void SetValue(ref GenerateType target, GenerateType value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref TextOutput target, TextOutput value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref TitleOptions target, TitleOptions value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref int target, int value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref bool target, bool value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref string target, string value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref List<GenerateType> target, List<GenerateType> value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref List<TextOutput> target, List<TextOutput> value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref List<TitleOptions> target, List<TitleOptions> value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref Windows.Storage.StorageFile target, Windows.Storage.StorageFile value)
         {
-            target = value;
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
         protected void SetValue(ref ObservableCollection<Windows.Storage.StorageFile> target, ObservableCollection<Windows.Storage.StorageFile> value)
         {
-            target = value;
+            if (target != value) target = value;
+            NotifyPropertyChanged("");
+        }
+        protected void SetValue(ref Windows.Storage.StorageFolder target, Windows.Storage.StorageFolder value)
+        {
+            if (target != value) target = value;
             NotifyPropertyChanged("");
         }
 
