@@ -25,12 +25,9 @@ namespace AeternamDonaEis
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public Locator ViewModel { get; set; }
-
         public MainPage()
         {
             this.InitializeComponent();
-            ViewModel = Locator.Instance;
             Navigate(0);
         }
 
