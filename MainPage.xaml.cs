@@ -46,9 +46,6 @@ namespace AeternamDonaEis
         {
             switch (index)
             {
-                case 1:
-                    WindowFrame.Navigate(typeof(MinifyPage));
-                    break;
                 default:
                     WindowFrame.Navigate(typeof(TextGeneratorPage));
                     break;

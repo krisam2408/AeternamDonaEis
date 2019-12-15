@@ -13,14 +13,7 @@
             <SplitView.Pane>
                 <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
                     <ListBoxItem>
-                        <StackPanel>
-                            <TextBlock Text="T" FontSize="56" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="14 0 0 0"></TextBlock>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <StackPanel>
-                            <TextBlock Text="M" FontSize="56" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4 0 0 0"></TextBlock>
-                        </StackPanel>
+                        <Image Source="Assets/Images/Logo2.png"></Image>
                     </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
