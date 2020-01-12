@@ -8,8 +8,8 @@
 
   <Identity
     Name="6fda4c3d-a723-43fc-9138-dfe82cb23cbe"
-    Publisher="CN=cborn"
-    Version="1.0.0.0" />
+    Publisher="CN=Christoph Bornhardt"
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="6fda4c3d-a723-43fc-9138-dfe82cb23cbe" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

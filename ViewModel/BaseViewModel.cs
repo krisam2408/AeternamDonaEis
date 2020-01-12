@@ -20,68 +20,14 @@ namespace AeternamDonaEis.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        #region SetValue
-        protected void SetValue(ref GenerateType target, GenerateType value)
+        protected void SetValue<T>(ref T refField, T value, [CallerMemberName] string propertyName = "")
         {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
+            if(EqualityComparer<T>.Default.Equals(refField, value))
+            {
+                return;
+            }
+            refField = value;
+            NotifyPropertyChanged(propertyName);
         }
-        protected void SetValue(ref TextOutput target, TextOutput value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref TitleOptions target, TitleOptions value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref int target, int value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref bool target, bool value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref string target, string value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref List<GenerateType> target, List<GenerateType> value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref List<TextOutput> target, List<TextOutput> value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref List<TitleOptions> target, List<TitleOptions> value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref Windows.Storage.StorageFile target, Windows.Storage.StorageFile value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref ObservableCollection<Windows.Storage.StorageFile> target, ObservableCollection<Windows.Storage.StorageFile> value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-        protected void SetValue(ref Windows.Storage.StorageFolder target, Windows.Storage.StorageFolder value)
-        {
-            if (target != value) target = value;
-            NotifyPropertyChanged("");
-        }
-
-        #endregion
     }
 }
